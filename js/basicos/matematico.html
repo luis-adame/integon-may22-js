@@ -1,0 +1,49 @@
+<html>
+    <header> 
+        <title>Javascript Matematico</title>
+    </header>
+
+    <body>
+        Numero 1:<input type="text" id="txtNumero1">
+        Numero 2:<input type="text" id="txtNumero2">
+        <br/>
+
+        <input type="button" value="Suma" onclick="ejecutaSuma();"/>
+        <input type="button" value="Resta" onclick="ejecutaResta();"/>
+        <input type="button" value="Multiplicacion" onclick="ejecutaMultiplicacion();"/>
+        <input type="button" value="Division" onclick="ejecutaDivision();"/>
+
+        <script type="text/javascript">
+            function ejecutaSuma(){
+                let num1 = parseInt(document.getElementById("txtNumero1").value);
+                let num2 = parseInt(document.getElementById("txtNumero2").value);
+                let suma = sumar(num1, num2);
+                alert(suma);
+            }
+
+            function ejecutaResta(){
+                let num1 = parseInt(document.getElementById("txtNumero1").value);
+                let num2 = parseInt(document.getElementById("txtNumero2").value);
+                let resta = restar(num1, num2);
+                alert(resta);
+            }
+
+            function ejecutaMultiplicacion(){
+                let num1 = parseInt(document.getElementById("txtNumero1").value);
+                let num2 = parseInt(document.getElementById("txtNumero2").value);
+                let multiplicacion = multiplicar(num1, num2);
+                alert(multiplicacion);
+            }
+
+            function ejecutaDivision(){
+                let num1 = parseInt(document.getElementById("txtNumero1").value);
+                let num2 = parseInt(document.getElementById("txtNumero2").value);
+                let division = dividir(num1, num2);
+                alert(division);
+            }
+        </script>
+
+        <script src="js/matematico.js"></script>
+    </body>
+</html>
+

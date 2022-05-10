@@ -1,0 +1,36 @@
+<html>
+    <header></header>
+    <body>
+        Nombre:<input type="text" id="nombre">
+        Edad:<input type="text" id="edad">
+        Ingreso:<input type="text" id="ingreso">
+
+        <input type="button" value="Aceptar" onclick="aceptar();"/>
+
+        <script src="js/formulario.js"></script>
+
+        <script type="text/javascript">
+            let personas = [];
+            
+            function aceptar(){
+                let nombre = document.getElementById("nombre").value;
+                if(nombre == ''){
+                    alert("Ingrese dato nombre.");
+                    return;
+                }
+                let edad = document.getElementById("edad").value;
+                if(edad == ''){
+                    alert("Ingrese dato edad.");
+                    return;
+                }
+                let ingreso = document.getElementById("ingreso").value;
+                if(ingreso == ''){
+                    alert("Ingrese dato ingreso.");
+                    return;
+                }
+
+                generaObjeto(nombre, edad, ingreso);
+            }  
+        </script>
+    </body>
+</html>
