@@ -360,8 +360,39 @@
           <div class="card mb-4">
             <div class="card-header pb-0">
               <h6>Authors table</h6>
-              <input type="button" value="Add Author" onclick="agregar();"/>  <!--LFA01-->
+              <input type="button" value="Add Author" id="btnAddAuthor"/>  <!--LFA01-->
             </div>
+
+            <div class="card-body" style="display:none" id="formAuthor">
+              <form role="form text-left">
+                <div class="mb-3">
+                  <input type="text" id="foto" class="form-control" placeholder="Foto" aria-label="Foto"/>
+                </div>
+                <div class="mb-3">
+                  <input type="text" id="nombre" class="form-control" placeholder="Nombre" aria-label="Nombre" />
+                </div>
+                <div class="mb-3">
+                  <input type="text" id="correo" class="form-control" placeholder="Correo" aria-label="Correo" />
+                </div>
+                <div class="mb-3">
+                  <input type="text" id="puesto" class="form-control" placeholder="Puesto" aria-label="Puesto" />
+                </div>
+                <div class="mb-3">
+                  <input type="text" id="area" class="form-control" placeholder="Area" aria-label="Area" />
+                </div>
+                <div class="mb-3">
+                  <input type="text" id="estatus" class="form-control" placeholder="Estatus" aria-label="Estatus" />
+                </div>
+                <div class="mb-3">
+                  <input type="text" id="fechaIngreso" class="form-control" placeholder="fechaIngreso" aria-label="FechaIngreso" />
+                </div>
+                <div class="text-center">
+                  <button type="button" id="btnSave" class="btn bg-gradient-dark w-100 my-4 mb-2">Save</button>
+                  <button type="button" id="btnCancel" class="btn bg-gradient-dark w-100 my-4 mb-2">Cancel</button>
+                </div>
+              </form>
+            </div>
+
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0" id="tablaAutores">
@@ -374,7 +405,7 @@
                       <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="body-tabla">
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
@@ -874,12 +905,14 @@
       </div>
     </div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!--LFA01-->
+  <script src="../assets/js/author-service.js"></script> <!--LFA01-->
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <script src="../assets/js/autores.js"></script> <!--LFA01-->
+  <!--<script src="../assets/js/autores.js"></script> LFA01-->
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
