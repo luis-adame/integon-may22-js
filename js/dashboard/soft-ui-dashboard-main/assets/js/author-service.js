@@ -27,7 +27,7 @@ $(document).ready(function () {
 });
 
 
-function nuevoAutor(valorFoto){
+function nuevoAutor(valorFoto, nombre, correo, puesto, area, estatus, fechaDeIngreso){
     $.ajax({
         type: "POST",
         dataType: 'json',
@@ -35,12 +35,12 @@ function nuevoAutor(valorFoto){
         url: 'http://localhost:3005/autores',
         data: JSON.stringify({
             foto: valorFoto, 
-            nombre: "Alexa Liras", 
-            correo: "alexa@creative-tim.com", 
-            puesto: "Programator", 
-            area: "Developer", 
-            estatus: "Offline", 
-            fechaIngreso: "11/01/19"},
+            nombre: nombre, 
+            correo: correo, 
+            puesto: puesto, 
+            area: area, 
+            estatus: estatus, 
+            fechaIngreso: fechaDeIngreso},
         ),
         success: function(data){
             console.log("Success");
@@ -56,6 +56,7 @@ function nuevoAutor(valorFoto){
 function agregarHTML(autor){
 
     let table = document.getElementById("tablaAutores");
+    //let table = $('tablaAutores')
 
     let nuevo = table.insertRow(-1);
 
@@ -105,15 +106,57 @@ $("#btnAddAuthor").click(function(){
 
 $("#btnSave").click(function(){
     let foto = $('#foto').val();
+    if(foto == ''){
+        alert('Caputure foto.');
+        return;
+    }
+    
     let nombre = $('#nombre').val();
-    let correo = $('#correo').val();
-    let puesto = $('#puesto').val();
-    let area = $('#area').val();
-    let estatus = $('#estatus').val();
+    if(nombre == ''){
+        alert('Capture nombre.');
+        return;
+    }
 
+    let correo = $('#correo').val();
+    if(correo == ''){
+        alert('Caputure correo.');
+        return;
+    }
+
+    let puesto = $('#puesto').val();
+    if(puesto == ''){
+        alert('Caputure puesto.');
+        return;
+    }
+
+    let area = $('#area').val();
+    if(area == ''){
+        alert('Caputure area.');
+        return;
+    }
+
+    let estatus = $('#estatus').val();
+    if(estatus == ''){
+        alert('Caputure estatus.');
+        return;
+    }
+
+    let fechaIngreso = $('#fechaIngreso').val();
+    if(fechaIngreso == ''){
+        alert('Caputure fecha de ingreso.');
+        return;
+    }
+
+    nuevoAutor(foto, nombre, correo, puesto, area, estatus, fechaIngreso);
 	$("#formAuthor").css("display","none");
 });
 
 $("#btnCancel").click(function(){
 	$("#formAuthor").css("display","none");
 });
+
+$("tr").hover(function(){
+    $(this).css("background-color", "yellow");
+    }, function(){
+    $(this).css("background-color", "pink");
+  });

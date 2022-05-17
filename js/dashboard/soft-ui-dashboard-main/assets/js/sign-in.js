@@ -17,11 +17,13 @@ function demoFetchAPI(correo, password){
             let selected = usuarios.find(e => e.correo == correo);
             if(selected == null){
                 console.log('Usuario no existe');
-                document.getElementById("email-msg").style.display = 'inline';
+                //document.getElementById("email-msg").style.display = 'inline';
+                $('#email-msg').css('display','inline');
             }else{
                 if(selected.password != password){
                     console.log('Contrasenia no valida');
-                    document.getElementById("password-msg").style.display = 'inline';
+                    //document.getElementById("password-msg").style.display = 'inline';
+                    $('#password-msg').css('display','inline');
                 }else{
                     console.log('bienvenido');
                     escondeCamposLogin();
@@ -35,11 +37,16 @@ function demoFetchAPI(correo, password){
 }
 
 function signIn(){
-    document.getElementById("email-msg").style.display = 'none';
-    document.getElementById("password-msg").style.display = 'none';
+    // document.getElementById("email-msg").style.display = 'none';
+    // document.getElementById("password-msg").style.display = 'none';
+    $('#email-msg').css('display','inline');
+    $('#password-msg').css('display','inline');
 
-    let emailtxt = document.getElementById("email").value;
-    let passwordtxt = document.getElementById("password").value;
+    // let emailtxt = document.getElementById("email").value;
+    // let passwordtxt = document.getElementById("password").value;
+
+    let emailtxt = $('#email').val();
+    let passwordtxt = $('#password').val();
 
     demoFetchAPI(emailtxt, passwordtxt);
 
@@ -88,6 +95,9 @@ function signIn(){
 // }
 
 function escondeCamposLogin(){
-    document.getElementById("camposLogin").style.display = 'none';
-    document.getElementById("welcome-usr").innerHTML += `<h1>Bienvenido ${document.getElementById("email").value}</h1>`;
+    //document.getElementById("camposLogin").style.display = 'none';
+    $('#camposLogin').css('display','none');
+
+    //document.getElementById("welcome-usr").innerHTML += `<h1>Bienvenido ${document.getElementById("email").value}</h1>`;
+    $('#welcome-usr').html(`<h1>Bienvenido ${document.getElementById("email").value}</h1>`);
 }
