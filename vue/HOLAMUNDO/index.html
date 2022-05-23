@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Hola Mundo Vue.js</title>
+        <script src="http://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                new Vue({
+                    el: '.reactive-text',
+                    data: {
+                        text: "Hola mundo, Vue.js",
+                        message: "Another message"
+                    }
+                })
+            });
+        </script>
+    </head>
+    <body>
+        <div>
+            <h1 class="reactive-text">
+                {{ text }} {{ message }}
+            </h1>
+        </div>
+    </body>
+</html>
