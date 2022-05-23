@@ -34,6 +34,7 @@ mongo.connect(url, {
     autores = db.collection("authors");
     usuarios = db.collection("usuarios");
     personas = db.collection("personas");
+    vuelos = db.collection("vuelos");
 
     console.log("Conectado a la DB");
 });
@@ -53,18 +54,6 @@ app.get("/alumnos", (request,response) => {
             return;
         }
         response.status(200).json({alumnos:items});
-    });
-});
-
-app.get("/personas", (request,response) => {
-    console.log("se ejecuto la ruta personas...");
-    personas.find().toArray((err, items) =>{
-        if(err){
-            console.log(err);
-            response.status(500).json({err:err});
-            return;
-        }
-        response.status(200).json({personas:items});
     });
 });
 
@@ -143,6 +132,52 @@ app.get("/usuarios", (request,response) => {
         }
         response.status(200).json({usuarios:items});
     });
+});
+
+app.get("/vuelos", (request,response) => {
+    console.log("se ejecuto la ruta vuelos...");
+    vuelos.find().toArray((err, items) =>{
+        if(err){
+            console.log(err);
+            response.status(500).json({err:err});
+            return;
+        }
+        //response.status(200).json({vuelos:items});
+        response.status(200).json(items);
+    });
+});
+
+app.get("/personas", (request,response) => {
+    console.log("se ejecuto la ruta personas...");
+    personas.find().toArray((err, items) =>{
+        if(err){
+            console.log(err);
+            response.status(500).json({err:err});
+            return;
+        }
+        response.status(200).json({personas:items});
+        //response.status(200).json(items);
+    });
+});
+
+app.post("/vuelos", (request,response) => {
+    vuelos.insertOne(
+        {
+            Numero:request.body.Numero,
+            Fecha:request.body.Fecha,
+            Horario:request.body.Horario,
+            Origen:request.body.Origen,
+            Destino:request.body.Destino,
+        },
+        (err, result) => {
+            if(err){
+                console.log(err);
+                response.status(500).json({err:err});
+                return;
+            }
+            response.status(200).json({ok:true});
+        }
+    )
 });
 
 app.listen(3005, ()=>{

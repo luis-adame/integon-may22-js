@@ -1,0 +1,13 @@
+<table>
+  <thead>
+  <th>Index</th><th>Nombre</th><th>Apellido</th><th>Ciudad</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let persona of personas | sort:'ciudad':'asc' ;index as myIndex">
+      <td><a [routerLink]="['detallepersonas', persona.id]">{{myIndex+1}}</a></td>
+      <td>{{persona.nombre | uppercase }}</td>
+      <td>{{persona.apellido | slice:2:5}}</td><td>{{persona.ciudad | uppercase}}</td>
+      <td>{{persona.moneda | currency:'EUR'}}</td>
+    </tr>
+  </tbody>
+</table>
