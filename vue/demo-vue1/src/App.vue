@@ -2,6 +2,14 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
 
+    <MessageFeed :messages="messages" />
+    <MessageEditor @send="onSend($event)" />
+
+    <DemoEventos @TriggerNotification="respuestaEvento"/>
+
+    <TextEditorWithCount />
+
+    <FiltersDemo :dato='lorem | ellipsis'/>
 
     <CardsExample>
       <!--<template v-slot:image>-->
@@ -59,6 +67,13 @@ import GreetingsExample from './components/Greetings-Example.vue'
 import RepeatExample from './components/Repeat-Example.vue'
 import SlottedComponent from './components/Slotted-Component.vue'
 import CardsExample from './components/Cards-Example.vue'
+import FiltersDemo from './components/Filters-Demo.vue'
+import TextEditorWithCount from './components/TextEditorWithCount-Demo.vue'
+import DemoEventos from './components/Demo-Eventos.vue'
+import MessageEditor from './components/MessageEditor.vue'
+import MessageFeed from './components/MessageFeed.vue'
+
+import {ellipsis} from '../src/utils/filters'
 
 const possibleGreetings = [
     { greeting: 'Hello', who: 'Vue.js' },
@@ -68,12 +83,17 @@ const possibleGreetings = [
 
 export default {
   name: 'App',
+  filters:{
+    ellipsis
+  },
   data(){
     return{
       input1:'123',
       input2:'456',
       input3:'789',
-      currentIndex:0
+      currentIndex:0,
+      lorem: 'prueba de filtros export',
+      messages: []
     }
   },
   components: {
@@ -90,7 +110,12 @@ export default {
     GreetingsExample,
     RepeatExample,
     SlottedComponent,
-    CardsExample
+    CardsExample,
+    FiltersDemo,
+    TextEditorWithCount,
+    DemoEventos,
+    MessageEditor,
+    MessageFeed
   },
 
   computed: {
@@ -110,6 +135,13 @@ export default {
       this.currentIndex = this.currentIndex === possibleGreetings.length - 1
         ? 0
         : this.currentIndex + 1
+    },
+    respuestaEvento($msg){
+      console.log($msg);
+      alert(`clicked ${$msg}`);
+    },
+    onSend(event) {
+      this.messages = [...this.messages, event]
     }
   }
 }
